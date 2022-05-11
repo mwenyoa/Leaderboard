@@ -32,7 +32,6 @@ To get a local copy up and running follow these simple example steps.
 
 ### Install
 - Run [npm install] to install all project dependencies
--
 
 ### Run tests
 - Run [npx hintrc .] to test the markup or HTML.
