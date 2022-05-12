@@ -116,7 +116,17 @@ eval("\n\n/* istanbul ignore next  */\nfunction styleTagTransform(css, styleElem
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n\n\n//# sourceURL=webpack://leaderboard/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n/* harmony import */ var _leaderScores_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./leaderScores.js */ \"./src/leaderScores.js\");\n\n\n\nconst leaderB = new _leaderScores_js__WEBPACK_IMPORTED_MODULE_1__[\"default\"]();\nleaderB.displayData();\n// refresh btn\ndocument.querySelector('.refresh').addEventListener('click', () => {\n  leaderB.displayData();\n});\n// submit data\nconst scoreForm = document.querySelector('.add-score');\nscoreForm.addEventListener('submit', (ex) => {\n  ex.preventDefault();\n  const username = scoreForm.elements.name.value;\n  const score = scoreForm.elements.score.value;\n  leaderB.postData(username, score).then((res) => {\n    if (!res.error) {\n      scoreForm.reset();\n    }\n  });\n});\n\n//# sourceURL=webpack://leaderboard/./src/index.js?");
+
+/***/ }),
+
+/***/ "./src/leaderScores.js":
+/*!*****************************!*\
+  !*** ./src/leaderScores.js ***!
+  \*****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ LeaderBoard)\n/* harmony export */ });\nclass LeaderBoard {\n  constructor() {\n    this.url = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/';\n    this.id = '46TANuqp4TocEYMLV1Ht';\n    this.participators = [];\n  }\n\n  // retrieve participant scores\n  async retrieveScores() {\n    const response = await fetch(`${this.url + this.id}/scores/`)\n      .then((res) => res.json())\n      .then((data) => ({ error: false, participators: data.result }))\n      .catch(() => ({ error: true, participators: this.participators }));\n    return response;\n  }\n\n  // Post data\n  async postData(username, score) {\n    if (username && score && typeof username === 'string') {\n      const response = await fetch(`${this.url + this.id}/scores/`, {\n        method: 'POST',\n        body: JSON.stringify({\n          user: username,\n          score,\n        }),\n        headers: {\n          'Content-Type': 'application/json',\n        },\n      })\n        .then((res) => res.json())\n        .then((msg) => ({ error: false, msg }))\n        .catch(() => ({ error: true, msg: 'Participator could mot be added!' }));\n      return response;\n    }\n    return ({ error: true, msg: 'Invalid participator name or score value' });\n  }\n\n  // Display participator name and Score data\n  displayData() {\n    this.retrieveScores()\n      .then((res) => {\n        if (!res.error) {\n          this.participators = res.participators;\n          this.participators.sort((x, y) => y.score - x.score);\n          const scoresList = document.querySelector('.scores-list');\n          scoresList.innerHTML = '';\n          this.participators.forEach((participator) => {\n            scoresList.innerHTML += `<li class=\"s-between\">${participator.user}: ${participator.score}</li>`;\n          });\n        }\n      });\n  }\n}\n\n//# sourceURL=webpack://leaderboard/./src/leaderScores.js?");
 
 /***/ })
 
