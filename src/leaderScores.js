@@ -13,4 +13,25 @@ export default class LeaderBoard {
       .catch(() => ({ error: true, participators: this.participators }));
     return response;
   }
+
+  // Post data
+  async postData(username, score) {
+    if (username && score && typeof username === 'string') {
+      const response = await fetch(`${this.url + this.id}/scores/`, {
+        method: 'POST',
+        body: JSON.stringify({
+          user: username,
+          score,
+        }),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+        .then((res) => res.json())
+        .then((msg) => ({ error: false, msg }))
+        .catch(() => ({ error: true, msg: 'Participator could mot be added!' }));
+      return response;
+    }
+    return ({ error: true, msg: 'Invalid participator name or score value' });
+  }
 }
