@@ -34,4 +34,20 @@ export default class LeaderBoard {
     }
     return ({ error: true, msg: 'Invalid participator name or score value' });
   }
+
+  // Display participator name and Score data
+  displayData() {
+    this.retrieveScores()
+      .then((res) => {
+        if (!res.error) {
+          this.participators = res.participators;
+          this.participators.sort((x, y) => y.score - x.score);
+          const scoresList = document.querySelector('.scores-list');
+          scoresList.innerHTML = '';
+          this.participators.forEach((participator) => {
+            scoresList.innerHTML += `<li class="s-between">${participator.user}: ${participator.score}</li>`;
+          });
+        }
+      });
+  }
 }
