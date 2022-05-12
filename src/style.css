@@ -10,10 +10,13 @@ body {
   height: 100vh;
   overflow-x: hidden;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background-color: rgb(255, 255, 255);
+  font-weight: bold;
 }
 
 main {
   justify-content: space-evenly;
+  margin-top: 50px;
 }
 
 .recent-scores,
@@ -24,16 +27,21 @@ form.add-score {
 
 .recent-scores div {
   align-items: center;
+  background: rgb(83, 115, 163);
+  padding: 10px;
+  box-shadow: 0 2px 4px 0 rgb(54, 54, 54);
 }
 
 button {
-  background: #fff;
   border: 0 solid transparent;
   border: 1px solid rgb(20, 20, 20);
-  height: 25px;
+  height: 40px;
   box-shadow: 0 2px 4px 0 rgb(54, 54, 54);
   width: 80px;
   cursor: pointer;
+  font-weight: bold;
+  color: rgb(3, 55, 133);
+  background: #e6e9ec;
 }
 
 .scores-list {
@@ -42,15 +50,17 @@ button {
   list-style: none;
   overflow-x: hidden;
   border-radius: 3px;
+  box-shadow: 0 2px 4px 0 rgb(54, 54, 54);
 }
 
 .scores-list li {
-  padding: 5px 10px;
+  padding: 10px 20px;
   text-transform: capitalize;
 }
 
 .scores-list li:nth-child(even) {
-  background: #ccc;
+  background: rgb(83, 115, 163);
+  box-shadow: 0 2px 4px 0 rgb(54, 54, 54);
 }
 
 form.add-score {
@@ -63,9 +73,14 @@ form.add-score button {
 }
 
 input {
-  height: 28px;
+  height: 45px;
   border: 2px solid #000;
   padding-left: 8px;
+  background: #e6e9ec;
+  box-shadow: 0 2px 4px 0 rgb(54, 54, 54);
+  color: rgb(150, 70, 70);
+  font-weight: bold;
+  border-inline-color: #fff;
 }
 
 .d-flex {
@@ -81,6 +96,21 @@ input {
 }
 
 h1 {
-  margin-left: 5%;
+  margin-left: 6%;
   font-weight: bolder;
+  color: rgb(3, 55, 133);
+  font-size: 2em;
+}
+
+.score.bg {
+  background: rgb(83, 115, 163);
+  box-shadow: 0 2px 4px 0 rgb(54, 54, 54);
+  color: #fff;
+}
+
+header {
+  width: 100%;
+  background: rgb(210, 215, 224);
+  box-shadow: 0 2px 4px 0 rgb(54, 54, 54);
+  padding: 10px;
 }
