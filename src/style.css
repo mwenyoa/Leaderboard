@@ -37,20 +37,22 @@ button {
   border: 1px solid rgb(20, 20, 20);
   height: 40px;
   box-shadow: 0 2px 4px 0 rgb(54, 54, 54);
-  width: 80px;
+  width: auto;
   cursor: pointer;
   font-weight: bold;
-  color: rgb(3, 55, 133);
+  color: rgb(5, 39, 90);
   background: #e6e9ec;
+  letter-spacing: 1px;
+  font-size: 18px;
 }
 
 .scores-list {
-  border: 2px solid #000;
+  border: 1px solid rgb(83, 115, 163);
   padding: 0;
   list-style: none;
   overflow-x: hidden;
   border-radius: 3px;
-  box-shadow: 0 2px 4px 0 rgb(54, 54, 54);
+  box-shadow: 0 6px 12px 0 rgb(54, 54, 54);
 }
 
 .scores-list li {
@@ -81,6 +83,7 @@ input {
   color: rgb(150, 70, 70);
   font-weight: bold;
   border-inline-color: #fff;
+  font-size: medium;
 }
 
 .d-flex {
