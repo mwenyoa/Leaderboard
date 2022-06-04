@@ -13,7 +13,7 @@ The leaderboard website displays scores submitted by different players. It also 
 
 ## Live Demo
 
-[Live Demo](https://moonlit-narwhal-cbe42e.netlify.app)
+[Netlify Live Demo](https://moonlit-narwhal-cbe42e.netlify.app)
 ## Getting Started
 To get a local copy up and running follow these simple example steps.
 
